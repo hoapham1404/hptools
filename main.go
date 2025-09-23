@@ -4,7 +4,6 @@ import (
 	"embed"
 	_ "embed"
 	"log"
-	"time"
 
 	"github.com/wailsapp/wails/v3/pkg/application"
 )
@@ -25,8 +24,8 @@ func main() {
 	app := application.New(application.Options{
 		Name:        "hptools",
 		Description: "A demo of using raw HTML & CSS",
-		Services:    []application.Service{
-			// application.NewService(&GreetService{}),
+		Services: []application.Service{
+			application.NewService(&WindowService{}),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
@@ -37,7 +36,12 @@ func main() {
 	})
 
 	app.Window.NewWithOptions(application.WebviewWindowOptions{
-		Title: "Window 1",
+		Title:     "Window 1",
+		Width:     1200,
+		Height:    800,
+		MinWidth:  800,  // Minimum window width
+		MinHeight: 600,  // Minimum window height
+		MaxWidth:  1920, // Maximum window width (optional)
 		Mac: application.MacWindow{
 			InvisibleTitleBarHeight: 50,
 			Backdrop:                application.MacBackdropTranslucent,
@@ -46,14 +50,6 @@ func main() {
 		BackgroundColour: application.NewRGB(27, 38, 54),
 		URL:              "/",
 	})
-
-	go func() {
-		for {
-			now := time.Now().Format(time.RFC1123)
-			app.Event.Emit("time", now)
-			time.Sleep(time.Second)
-		}
-	}()
 
 	err := app.Run()
 

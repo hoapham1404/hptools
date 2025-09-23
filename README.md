@@ -22,7 +22,7 @@ hptools is a desktop application built with Wails3, designed to provide a suite 
 3. **Production build**  
    Build a standalone executable:
    ```
-   wails3 build
+   wails3 task windows:build PRODUCTION=true
    ```
    The output will be in the `build` directory.
 

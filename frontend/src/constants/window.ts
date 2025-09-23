@@ -19,7 +19,7 @@ export const SIZE_PRESETS: SizePreset[] = [
   { name: "Square", w: 800, h: 800 },
   { name: "Small", w: 640, h: 480 },
   { name: "Wide", w: 1200, h: 600 },
-  { name: "Custom 1", w: 1860, h: 1000, x: 30, y: 30 },
+  { name: "Custom 1", w: 1860, h: 1000, x: 30, y: 20 },
 ] as const;
 
 export const STATUS_MESSAGES = {

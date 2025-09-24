@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { WindowService, ProcessInfo } from '../../bindings/hptools';
+import {  ProcessInfo } from '../../bindings/hptools/internal/models';
+import { WailsWindowService } from '../../bindings/hptools/internal/services';
 import { UseProcessesReturn } from '../types/window';
 import { STATUS_MESSAGES } from '../constants/window';
 
@@ -15,8 +16,8 @@ export const useProcesses = (
     try {
       setLoading(true);
       const apps = debugMode 
-        ? await WindowService.GetAllProcessesWithWindows()
-        : await WindowService.GetApplicationProcesses();
+        ? await WailsWindowService.GetAllProcessesWithWindows()
+        : await WailsWindowService.GetApplicationProcesses();
       setProcesses(apps);
       setStatus(STATUS_MESSAGES.PROCESSES_FOUND(apps.length, debugMode));
     } catch (error) {

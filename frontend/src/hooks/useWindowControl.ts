@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { WindowService, ProcessInfo, WindowInfo } from '../../bindings/hptools';
+import {  ProcessInfo, WindowInfo } from '../../bindings/hptools/internal/models';
+import { WailsWindowService } from '../../bindings/hptools/internal/services';
 import { UseWindowControlReturn, WindowDimensions } from '../types/window';
 import { DEFAULT_DIMENSIONS, STATUS_MESSAGES } from '../constants/window';
 
@@ -26,7 +27,7 @@ export const useWindowControl = (
 
     try {
       setLoading(true);
-      await WindowService.SetWindowSize(process.pid, dimensions.width, dimensions.height);
+      await WailsWindowService.SetWindowSize(process.pid, dimensions.width, dimensions.height);
       setStatus(STATUS_MESSAGES.WINDOW_RESIZED(dimensions.width, dimensions.height, process.imageName));
       // Refresh window info after resize
       await getWindowInfo(process);
@@ -46,7 +47,7 @@ export const useWindowControl = (
 
     try {
       setLoading(true);
-      await WindowService.SetWindowPosition(process.pid, dimensions.x, dimensions.y, dimensions.width, dimensions.height);
+      await WailsWindowService.SetWindowPosition(process.pid, dimensions.x, dimensions.y, dimensions.width, dimensions.height);
       setStatus(STATUS_MESSAGES.WINDOW_MOVED(dimensions.x, dimensions.y, dimensions.width, dimensions.height, process.imageName));
       // Refresh window info after move/resize
       await getWindowInfo(process);
@@ -66,7 +67,7 @@ export const useWindowControl = (
 
     try {
       setLoading(true);
-      const info = await WindowService.GetWindowInfo(process.pid);
+      const info = await WailsWindowService.GetWindowInfo(process.pid);
       if (info) {
         setCurrentWindowInfo(info);
         setStatus(STATUS_MESSAGES.WINDOW_INFO(info.width, info.height, info.x, info.y));

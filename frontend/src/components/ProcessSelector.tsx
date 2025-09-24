@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProcessInfo } from '../../bindings/hptools';
+import { ProcessInfo } from '../../bindings/hptools/internal/models';
 
 interface ProcessSelectorProps {
   processes: ProcessInfo[];

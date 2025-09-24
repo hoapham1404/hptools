@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "hptools",
+    "description": "HP Tools - Window Management Application"
+  },
+  "window": {
+    "title": "HP Tools",
+    "width": 1200,
+    "height": 800,
+    "minWidth": 800,
+    "minHeight": 600,
+    "maxWidth": 1920,
+    "maxHeight": 1080,
+    "backgroundColour": {
+      "R": 27,
+      "G": 38,
+      "B": 54,
+      "A": 255
+    },
+    "mac": {
+      "invisibleTitleBarHeight": 50,
+      "backdrop": "MacBackdropTranslucent",
+      "titleBar": "MacTitleBarHiddenInset"
+    }
+  },
+  "log": {
+    "level": "info",
+    "format": "text"
+  }
+}

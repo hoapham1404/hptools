@@ -1,4 +1,4 @@
-import { ProcessInfo, WindowInfo } from '../../bindings/hptools';
+import { ProcessInfo, WindowInfo } from '../../bindings/hptools/internal/models';
 
 export interface WindowDimensions {
   width: number;

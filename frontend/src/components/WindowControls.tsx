@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProcessInfo, WindowInfo } from '../../bindings/hptools';
+import { ProcessInfo, WindowInfo } from '../../bindings/hptools/internal/models';
 import { WindowDimensions } from '../types/window';
 import { INPUT_LIMITS, SIZE_PRESETS, DEFAULT_DIMENSIONS } from '../constants/window';
 import { NumberInput } from './NumberInput';

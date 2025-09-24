@@ -1,45 +1,104 @@
-# hptools
+# HP Tools - Window Management Application
 
-hptools is a desktop application built with Wails3, designed to provide a suite of productivity and utility tools for developers and power users.
+HP Tools is a desktop application built with Wails3 that provides advanced window management functionality for Windows systems. It helps users organize and control application windows with precision.
 
 ## Features
 
-- Modular toolset for various developer workflows
-- Modern desktop UI with fast performance
-- Cross-platform support (Windows, macOS, Linux)
-- Easy integration with custom scripts and plugins
+- **Process Discovery**: Automatically detect running applications with visible windows
+- **Window Positioning**: Set exact window positions and sizes
+- **Smart Filtering**: Filter out system processes and show only relevant applications  
+- **Structured Logging**: Comprehensive logging for debugging and monitoring
+- **Configurable**: JSON-based configuration system with sensible defaults
+
+## Architecture
+
+This project has been refactored for maintainability using clean architecture principles:
+
+```
+hptools/
+├── internal/
+│   ├── config/          # Configuration management
+│   ├── errors/          # Structured error handling
+│   ├── logging/         # Logging utilities
+│   ├── models/          # Data structures
+│   ├── services/        # Business logic
+│   └── windows/         # Windows API wrapper
+├── frontend/            # React/TypeScript UI
+└── main.go             # Application entry point
+```
+
+For detailed architecture information, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Getting Started
 
-1. **Install dependencies** (ensure you have Go and Node.js installed).
+### Prerequisites
+- Go 1.24+ 
+- Node.js and npm (for frontend development)
+- Wails v3
 
-2. **Development mode**  
-   Run the app with hot-reloading:
+### Development
+
+1. **Clone and setup**:
+   ```bash
+   git clone <repository-url>
+   cd hptools
    ```
+
+2. **Run in development mode**:
+   ```bash
    wails3 dev
    ```
 
-3. **Production build**  
-   Build a standalone executable:
-   ```
+3. **Build for production**:
+   ```bash
    wails3 task windows:build PRODUCTION=true
    ```
-   The output will be in the `build` directory.
 
-## Project Structure
+### Configuration
 
-- `frontend/` — Frontend code (HTML, CSS, JS/TS)
-- `main.go` — Go backend entry point
-- `app.go` — Application logic and exported methods
-- `wails.json` — Wails project configuration
+HP Tools uses a JSON configuration file. Create `~/.config/hptools/config.json` or use the provided example:
 
-## Documentation
+```bash
+cp config.example.json ~/.config/hptools/config.json
+```
 
-- [Wails3 Documentation](https://v3alpha.wails.io/)
+Configuration options include:
+- **App settings**: Name, description
+- **Window settings**: Default size, position, styling
+- **Logging**: Level, format (text/json)
+
+## Usage
+
+The application provides a clean interface for:
+
+1. **Viewing running applications** with their process details
+2. **Setting window dimensions** with precise width/height control  
+3. **Positioning windows** at specific screen coordinates
+4. **Real-time window information** including current size and position
+
+## API Reference
+
+### Main Services
+
+- `GetApplicationProcesses()` - Get all applications with visible windows
+- `SetWindowSize(pid, width, height)` - Resize a window by process ID
+- `SetWindowPosition(pid, x, y, width, height)` - Move and resize window
+- `GetWindowInfo(pid)` - Get current window dimensions and position
 
 ## Contributing
 
-Pull requests and issues are welcome! Please open an issue to discuss your ideas or report bugs.
+1. Follow the established architecture patterns
+2. Add appropriate logging and error handling
+3. Update tests for new functionality
+4. Document any new configuration options
+
+## Project Structure Details
+
+- **Models**: Data structures (`ProcessInfo`, `WindowInfo`)
+- **Services**: Business logic with dependency injection
+- **Windows API**: Clean abstraction over Windows system calls
+- **Configuration**: Centralized, file-based settings
+- **Logging**: Structured logging with configurable levels
 
 ## License
 
@@ -47,4 +106,4 @@ Pull requests and issues are welcome! Please open an issue to discuss your ideas
 
 ---
 
-Happy coding with hptools!
+Built with ❤️ using Wails v3

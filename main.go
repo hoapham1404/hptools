@@ -9,6 +9,7 @@ import (
 	"hptools/internal/config"
 	"hptools/internal/logging"
 	"hptools/internal/services"
+	"hptools/internal/ui"
 	"hptools/internal/windows"
 )
 
@@ -52,7 +53,7 @@ func main() {
 	})
 
 	// Create main window
-	app.Window.NewWithOptions(application.WebviewWindowOptions{
+	win := app.Window.NewWithOptions(application.WebviewWindowOptions{
 		Title:     cfg.Window.Title,
 		Width:     cfg.Window.Width,
 		Height:    cfg.Window.Height,
@@ -67,6 +68,10 @@ func main() {
 		BackgroundColour: cfg.Window.BackgroundColour,
 		URL:              "/",
 	})
+
+	// Setup system tray via helper (encapsulates menu & behavior)
+	cleanupTray := ui.SetupSystray(app, win, cfg.Systray)
+	defer cleanupTray()
 
 	appLogger.Info("Application initialized, starting...")
 

@@ -11,9 +11,10 @@ import (
 
 // Config holds the application configuration
 type Config struct {
-	App    AppConfig    `json:"app"`
-	Window WindowConfig `json:"window"`
-	Log    LogConfig    `json:"log"`
+	App     AppConfig     `json:"app"`
+	Window  WindowConfig  `json:"window"`
+	Log     LogConfig     `json:"log"`
+	Systray SystrayConfig `json:"systray"`
 }
 
 // AppConfig holds general application settings
@@ -48,6 +49,13 @@ type LogConfig struct {
 	Format string `json:"format"` // "text" or "json"
 }
 
+// SystrayConfig holds system tray related settings
+type SystrayConfig struct {
+	Label        string `json:"label"`
+	WindowOffset int    `json:"windowOffset"`
+	DebounceMS   int    `json:"debounceMs"`
+}
+
 // Default returns a configuration with sensible defaults
 func Default() *Config {
 	return &Config{
@@ -73,6 +81,11 @@ func Default() *Config {
 		Log: LogConfig{
 			Level:  "info",
 			Format: "text",
+		},
+		Systray: SystrayConfig{
+			Label:        "HP Tools",
+			WindowOffset: 10,
+			DebounceMS:   200,
 		},
 	}
 }

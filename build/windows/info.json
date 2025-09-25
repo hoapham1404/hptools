@@ -5,10 +5,10 @@
 	"info": {
 		"0000": {
 			"ProductVersion": "0.1.0",
-			"CompanyName": "My Company",
-			"FileDescription": "My Product Description",
-			"LegalCopyright": "© now, My Company",
-			"ProductName": "My Product",
+			"CompanyName": "HP Tools",
+			"FileDescription": "HP Tools Description",
+			"LegalCopyright": "© now, HP Tools",
+			"ProductName": "HP Tools",
 			"Comments": "This is a comment"
 		}
 	}

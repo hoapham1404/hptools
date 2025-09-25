@@ -12,9 +12,9 @@
     ProcessorArchitecture="x64" />
   
   <Properties>
-    <DisplayName>My Product</DisplayName>
-    <PublisherDisplayName>My Company</PublisherDisplayName>
-    <Description>My Product Description</Description>
+    <DisplayName>HP Tools</DisplayName>
+    <PublisherDisplayName>hoapham1404</PublisherDisplayName>
+    <Description> An swiss army knife for me </Description>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   
@@ -29,8 +29,8 @@
   <Applications>
     <Application Id="com.wails.hptools" Executable="hptools.exe" EntryPoint="Windows.FullTrustApplication">
       <uap:VisualElements
-        DisplayName="My Product"
-        Description="My Product Description"
+        DisplayName="HP Tools"
+        Description="HP Tools Application"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">

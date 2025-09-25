@@ -58,7 +58,7 @@ func Default() *Config {
 		Window: WindowConfig{
 			Title:            "HP Tools",
 			Width:            1200,
-			Height:           800,
+			Height:           1000,
 			MinWidth:         800,
 			MinHeight:        600,
 			MaxWidth:         1920,
